@@ -16,7 +16,19 @@ apache-airflow-providers-microsoft-azure
 ```
 
 Additionally, add the ENV Vars found in the Dockerfile in this repo, populated with values from your Azure instance.
+```
+ENV AZURE_CLIENT_ID="YOUR_CLIENT_ID" # Found in App Registration Page
+ENV AZURE_TENANT_ID="YOUR_TENANT_ID" # Found in App Registration Page
+ENV AZURE_CLIENT_SECRET="YOUR_CLIENT_SECRET" # Found in App Registration Page > Client Secrets >> 'Value'
 
+ENV AIRFLOW__SECRETS__BACKEND="airflow.providers.microsoft.azure.secrets.azure_key_vault.AzureKeyVaultBackend"
+
+# Using prefixes and default '-' separator:
+ENV AIRFLOW__SECRETS__BACKEND_KWARGS='{"connections_prefix": "airflow-connections", "variables_prefix": "airflow-variables", "vault_url": "your_vault_url"}'
+
+# Using no prefixes and no separator:
+# ENV AIRFLOW__SECRETS__BACKEND_KWARGS='{"connections_prefix": "", "sep":"", "variables_prefix": "", "sep":"", "vault_url": "your_vault_url"}'
+```
 ### Installing
 
 In order to run these demos on your localhost, be sure to install:
