@@ -83,7 +83,7 @@ In your browser, navigate to ```http://localhost:8080/```
 - Similar to the Variables example above, the connections prefix set in our Dockerfile was `airflow-connections` with the default `-` separator being used.
 - **Example using a localhost instance postgres metadatadb:**
     - In your Key Vault, Create a secret named `airflow-connections-postgresdb` with the connection URI as the value. For the default localhost postgres db, the URI is: `postgres://postgres:postgres@postgres:5432/postgres`
-    - In order to use the `postgresdb`secret you just created, simply use the value `postgresd` anywhere you would typically enter a connection_id. For example:
+    - In order to use the `postgresdb`secret you just created, simply use the value `postgresdb` anywhere you would typically enter a connection_id. For example:
         
         ```python
         # Example 1:
